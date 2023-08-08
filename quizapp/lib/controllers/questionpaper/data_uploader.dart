@@ -25,6 +25,7 @@ class DataUploader extends GetxController {
 
     final manifestContent = await DefaultAssetBundle.of(Get.context!)
         .loadString("AssetManifest.json"); //! means not null
+
     final Map<String, dynamic> manifestMap = jsonDecode(manifestContent);
 
     //load json and print path
@@ -32,12 +33,13 @@ class DataUploader extends GetxController {
         .where((path) =>
             path.startsWith("assets/DB/papers") && path.contains(".json"))
         .toList();
-    // print(papersInAssets);
+    print(papersInAssets);
 
     List<QuestionPaperModel> questionPapers = [];
 
     for (var paper in papersInAssets) {
       String stringPaperContent = await rootBundle.loadString(paper);
+      print(stringPaperContent);
       questionPapers
           .add(QuestionPaperModel.fromJson(jsonDecode(stringPaperContent)));
     }
