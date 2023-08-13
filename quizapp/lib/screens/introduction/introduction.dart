@@ -18,7 +18,7 @@ class AppIntroductionScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const Icon(Icons.star, size: 65),
-              SizedBox(
+              const SizedBox(
                 height: 40,
               ),
               const Text(
@@ -29,11 +29,13 @@ class AppIntroductionScreen extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                   ),
                   'This is a study app. You can use it as you want. If you understand how it works, you would be able to scale it. With this you will master firebase backend and flutter front end.'),
-              SizedBox(
+              const SizedBox(
                 height: 40,
               ),
               AppCircleButton(
-                onTap: () => null,
+                onTap: () {
+                  Get.toNamed('/home');
+                },
                 child: const Icon(
                   Icons.arrow_forward,
                   size: 35,

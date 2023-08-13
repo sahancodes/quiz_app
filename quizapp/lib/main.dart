@@ -1,21 +1,19 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:frontend/bindings/initial_bindings.dart';
-import 'package:frontend/configs/themes/app_light_theme.dart';
-import 'package:frontend/controllers/questionpaper/data_uploader_screen.dart';
 import 'package:frontend/controllers/theme_controller.dart';
 import 'package:frontend/firebase_options.dart';
 import 'package:frontend/routes/app_routes.dart';
-import 'package:frontend/screens/introduction/introduction.dart';
-import 'package:frontend/screens/splash/splash_screen.dart';
 import 'package:get/get.dart';
 
-import 'configs/themes/app_dark_theme.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   InitialBindings().dependencies();
-  runApp(MyApp());
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
