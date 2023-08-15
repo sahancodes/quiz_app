@@ -1,5 +1,9 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:frontend/configs/themes/ui_parameters.dart';
 import 'package:frontend/controllers/questionpaper/question_paper_controller.dart';
+import 'package:frontend/screens/home/question_card.dart';
+import 'package:frontend/widgets/content_area.dart';
 import 'package:get/get.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -7,29 +11,23 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    QuestionPaperController questionPaperController = Get.find();
+    QuestionPaperController _questionPaperController = Get.find();
     return Scaffold(
-        body: Obx(() => ListView.separated(
-            itemBuilder: (BuildContext context, int index) {
-              return ClipRRect(
-                child: SizedBox(
-                  height: 200,
-                  width: 200,
-                  child: FadeInImage(
-                    placeholder:
-                        const AssetImage("assets/images/app_splash_logo.png"),
-                    image: NetworkImage(
-                        questionPaperController.allPaperImages[index],
-                        scale: 1.0),
-                  ),
-                ),
-              );
-            },
-            separatorBuilder: (BuildContext context, int index) {
-              return const SizedBox(
-                height: 20,
-              );
-            },
-            itemCount: questionPaperController.allPaperImages.length)));
+        body: ContentArea(
+      addPadding: false,
+      child: Obx(() => ListView.separated(
+          padding: UIParameters.mobileScreenPadding,
+          itemBuilder: (BuildContext context, int index) {
+            return QuestionCard(
+              model: _questionPaperController.allPapers[index],
+            );
+          },
+          separatorBuilder: (BuildContext context, int index) {
+            return const SizedBox(
+              height: 20,
+            );
+          },
+          itemCount: _questionPaperController.allPapers.length)),
+    ));
   }
 }

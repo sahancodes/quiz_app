@@ -1,9 +1,14 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:frontend/firebase_ref/references.dart';
+import 'package:frontend/models/question_paper_model.dart';
 import 'package:frontend/services/firebase_storage_service.dart';
 import 'package:get/get.dart';
 
 class QuestionPaperController extends GetxController {
   final allPaperImages = <String>[].obs;
-  FirebaseStorageService fireStore = Get.put(FirebaseStorageService());
+  final allPapers = <QuestionPaperModel>[].obs;
+
+  FirebaseStorageService firebaseStore = Get.put(FirebaseStorageService());
 
   @override
   void onReady() {
@@ -14,11 +19,18 @@ class QuestionPaperController extends GetxController {
   Future<void> getAllPapers() async {
     List<String> imgName = ["biology", "chemistry", "maths", "physics"];
     try {
-      for (var img in imgName) {
-        final imgUrl = await fireStore
-            .getImage(img); //Get complete image path from firebase
-        allPaperImages.add(imgUrl!);
+      QuerySnapshot<Map<String, dynamic>> data = await questionPaperRF.get();
+      final paperList = data.docs
+          .map((paper) => QuestionPaperModel.fromSnapshot(paper))
+          .toList();
+      allPapers.assignAll(paperList);
+
+      for (var paper in paperList) {
+        final imgUrl = await firebaseStore
+            .getImage(paper.title); //Get complete image path from firebase
+        paper.imageUrl = imgUrl;
       }
+      allPapers.assignAll(paperList);
     } catch (e) {
       print(e);
     }
