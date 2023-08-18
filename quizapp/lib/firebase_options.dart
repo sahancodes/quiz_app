@@ -28,7 +28,7 @@ class DefaultFirebaseOptions {
         return macos;
       case TargetPlatform.windows:
         throw UnsupportedError(
-          'DefaultFirebaseOptions have not been confUnsupportedError (Unsupported operation: DefaultFirebaseOptions have not been configured for windows - you can reconfigure this by running the FlutterFire CLI again.)igured for windows - '
+          'DefaultFirebaseOptions have not been configured for windows - '
           'you can reconfigure this by running the FlutterFire CLI again.',
         );
       case TargetPlatform.linux:
@@ -67,8 +67,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '957166738567',
     projectId: 'quizappbe-d6f6d',
     storageBucket: 'quizappbe-d6f6d.appspot.com',
-    iosClientId:
-        '957166738567-thebekv4a33flbth2thmddsmp7hjfd9t.apps.googleusercontent.com',
+    iosClientId: '957166738567-thebekv4a33flbth2thmddsmp7hjfd9t.apps.googleusercontent.com',
     iosBundleId: 'com.example.frontend',
   );
 
@@ -78,8 +77,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '957166738567',
     projectId: 'quizappbe-d6f6d',
     storageBucket: 'quizappbe-d6f6d.appspot.com',
-    iosClientId:
-        '957166738567-cdfs3kl1246dnfg3bt2ith3j01stncq2.apps.googleusercontent.com',
+    iosClientId: '957166738567-cdfs3kl1246dnfg3bt2ith3j01stncq2.apps.googleusercontent.com',
     iosBundleId: 'com.example.frontend.RunnerTests',
   );
 }

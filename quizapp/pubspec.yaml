@@ -40,6 +40,11 @@ dependencies:
   google_fonts: ^5.1.0
   firebase_storage: ^11.2.5
   cached_network_image: ^3.2.1
+  flutter_zoom_drawer: ^2.1.2
+  firebase_auth: ^4.7.3
+  url_launcher: ^6.0.18
+  google_sign_in: ^6.1.4
+  flutter_svg: ^2.0.7
 
 dev_dependencies:
   flutter_test:
@@ -84,7 +89,7 @@ flutter:
   fonts:
     - family: AppIcons
       fonts:
-        - asset:  assts/icons/AppIcons.ttf
+        - asset:  assets/icons/AppIcons.ttf
   # fonts:
   #   - family: Schyler
   #     fonts:
