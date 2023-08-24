@@ -4,6 +4,7 @@ import 'package:frontend/models/question_paper_model.dart';
 import 'package:frontend/services/firebase_storage_service.dart';
 import 'package:get/get.dart';
 
+import '../../screens/question/question_screen.dart';
 import '../auth_controller.dart';
 
 class QuestionPaperController extends GetxController {
@@ -45,9 +46,10 @@ class QuestionPaperController extends GetxController {
     if (_authController.isLoggedIn()) {
       if (tryAgain) {
         Get.back();
-        //Get.offNamed();
+        Get.toNamed(QuestionScreen.routeName,
+            arguments: paper, preventDuplicates: false);
       } else {
-        //Get.toNamed();
+        Get.toNamed(QuestionScreen.routeName, arguments: paper);
       }
     } else {
       print("The title is ${paper.title}");
